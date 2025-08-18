@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  
+  // Relations
+  habits    Habit[]
+  habitLogs HabitLog[]
+  
+  @@map("users")
+}
+
+model Habit {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  category    HabitCategory
+  targetValue Int?     // e.g., 8 for 8 hours of sleep, 2000 for 2L water
+  unit        String?  // e.g., "hours", "liters", "minutes"
+  frequency   HabitFrequency @default(DAILY)
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  
+  // Relations
+  userId    String @map("user_id")
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  habitLogs HabitLog[]
+  
+  @@map("habits")
+}
+
+model HabitLog {
+  id        String   @id @default(cuid())
+  value     Float    // actual value logged (e.g., 6.5 for 6.5 hours of sleep)
+  notes     String?
+  date      DateTime @default(now())
+  createdAt DateTime @default(now()) @map("created_at")
+  
+  // Relations
+  habitId String @map("habit_id")
+  habit   Habit  @relation(fields: [habitId], references: [id], onDelete: Cascade)
+  userId  String @map("user_id")
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([habitId, userId, date])
+  @@map("habit_logs")
+}
+
+enum HabitCategory {
+  HEALTH
+  FITNESS
+  NUTRITION
+  SLEEP
+  MINDFULNESS
+  PRODUCTIVITY
+  SOCIAL
+  OTHER
+}
+
+enum HabitFrequency {
+  DAILY
+  WEEKLY
+  MONTHLY
+}
