@@ -68,13 +68,13 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-4">
+    <div className="min-h-screen bg-background p-4 overflow-x-hidden">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center flex-wrap justify-between">
           <div>
             <h1 className="text-3xl font-bold">Dashboard</h1>
-            <p className="text-muted-foreground">Track your health and habit progress</p>
+            <p className="text-muted-foreground mb-6">Track your health and habit progress</p>
           </div>
           <div className="flex gap-2">
             <Button asChild variant="outline">
@@ -99,7 +99,7 @@ export default function DashboardPage() {
         <AIHealthTips />
 
         {/* Charts Row */}
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid  gap-6 lg:grid-cols-2">
           <ProgressChart data={data.dailyProgress} />
           <CategoryChart data={data.categoryStats} />
         </div>

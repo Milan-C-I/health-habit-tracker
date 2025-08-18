@@ -20,7 +20,7 @@ export function CategoryChart({ data }: CategoryChartProps) {
   }))
 
   return (
-    <Card>
+    <Card className="w-[92vw]">
       <CardHeader>
         <CardTitle>Habits by Category</CardTitle>
         <CardDescription>Distribution of your habits across different categories</CardDescription>
@@ -33,7 +33,7 @@ export function CategoryChart({ data }: CategoryChartProps) {
               color: "hsl(var(--chart-2))",
             },
           }}
-          className="h-[300px]"
+          className="h-[180px] md:h-[300px]"
         >
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData}>
