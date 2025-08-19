@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Activity, Home, LogOut } from "lucide-react"
+import { ThemeToggle } from "./theme-toggle"
 
 export function Navigation() {
   const router = useRouter()
@@ -42,10 +43,13 @@ export function Navigation() {
               </Link>
             </div>
           </div>
-          <Button variant="ghost" size="sm" onClick={handleLogout}>
-            <LogOut className="h-4 w-4 mr-2" />
-            Logout
-          </Button>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <ThemeToggle />
+            <Button variant="ghost" size="sm" onClick={handleLogout} className="text-xs sm:text-sm">
+              <LogOut className="h-4 w-4 sm:mr-2" />
+              <span className="hidden sm:inline">Logout</span>
+            </Button>
+          </div>
         </div>
       </div>
     </nav>

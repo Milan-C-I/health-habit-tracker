@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Circle } from "lucide-react"
 import type { HabitWithLogs } from "@/lib/types"
+import Link from "next/link"
 
 interface RecentHabitsProps {
   habits: HabitWithLogs[]
@@ -47,7 +48,9 @@ export function RecentHabits({ habits }: RecentHabitsProps) {
                     {loggedToday ? (
                       <CheckCircle className="h-5 w-5 text-green-600" />
                     ) : (
-                      <Circle className="h-5 w-5 text-gray-400" />
+                      <Link href="/habits">
+                        <Circle className="h-5 w-5 text-gray-400" />
+                      </Link>
                     )}
                     <div>
                       <div className="font-medium">{habit.name}</div>

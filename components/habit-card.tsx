@@ -154,9 +154,9 @@ export function HabitCard({ habit, onUpdate, onDelete }: HabitCardProps) {
   }
 
   return (
-    <Card className="w-full">
+    <Card className="w-full flex flex-col justify-between">
       <CardHeader className="pb-3">
-        <div className="flex items-start justify-between">
+        <div className="flex items-start  justify-between">
           <div className="space-y-1">
             <CardTitle className="text-lg">{habit.name}</CardTitle>
             {habit.description && <CardDescription className="text-sm">{habit.description}</CardDescription>}
@@ -164,8 +164,8 @@ export function HabitCard({ habit, onUpdate, onDelete }: HabitCardProps) {
           <div className="flex gap-1">
             <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
               <DialogTrigger asChild>
-                <Button variant="ghost" size="sm">
-                  <Pencil className="h-4 w-4" />
+                <Button className="cursor-pointer" variant="ghost" size="sm">
+                  <Pencil className="h-4 text-yellow-400 w-4" />
                 </Button>
               </DialogTrigger>
               <DialogContent>
@@ -230,8 +230,8 @@ export function HabitCard({ habit, onUpdate, onDelete }: HabitCardProps) {
               </DialogContent>
             </Dialog>
 
-            <Button variant="ghost" size="sm" onClick={handleDelete}>
-              <Trash2 className="h-4 w-4" />
+            <Button className="cursor-pointer" variant="ghost" size="sm" onClick={handleDelete}>
+              <Trash2 className="h-4 text-red-500 w-4" />
             </Button>
           </div>
         </div>
@@ -251,8 +251,8 @@ export function HabitCard({ habit, onUpdate, onDelete }: HabitCardProps) {
           )}
 
           {todayLog ? (
-            <div className="p-3 bg-green-50 rounded-lg border border-green-200">
-              <div className="text-sm font-medium text-green-800">
+            <div className="p-3 bg-purple-100 rounded-lg border border-purple-200">
+              <div className="text-sm font-medium text-purple-800">
                 Logged today: {todayLog.value} {habit.unit}
               </div>
               {todayLog.notes && <div className="text-sm text-green-600 mt-1">{todayLog.notes}</div>}
@@ -260,7 +260,7 @@ export function HabitCard({ habit, onUpdate, onDelete }: HabitCardProps) {
           ) : (
             <Dialog open={isLogDialogOpen} onOpenChange={setIsLogDialogOpen}>
               <DialogTrigger asChild>
-                <Button className="w-full" size="sm">
+                <Button className="w-full cursor-pointer" size="sm">
                   <Plus className="h-4 w-4 mr-2" />
                   Log Today
                 </Button>
@@ -303,7 +303,7 @@ export function HabitCard({ habit, onUpdate, onDelete }: HabitCardProps) {
                   </div>
 
                   <div className="flex gap-2">
-                    <Button type="submit" className="flex-1" disabled={isLoading}>
+                    <Button type="submit" className="flex-1 cursor-pointer" disabled={isLoading}>
                       {isLoading ? "Logging..." : "Log Progress"}
                     </Button>
                     <Button type="button" variant="outline" onClick={() => setIsLogDialogOpen(false)}>

@@ -72,7 +72,7 @@ export function AIHealthTips() {
             size="sm"
             onClick={generateTip}
             disabled={isLoading}
-            className="flex items-center gap-2 bg-transparent"
+            className="flex items-center gap-2 cursor-pointer bg-transparent"
           >
             {isLoading ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
             {isLoading ? "Generating..." : "Get New Tip"}
@@ -93,7 +93,7 @@ export function AIHealthTips() {
             <p className="text-muted-foreground mb-4">
               Click "Get New Tip" to receive a personalized health recommendation based on your habits!
             </p>
-            <Button onClick={generateTip} disabled={isLoading}>
+            <Button className="cursor-pointer" onClick={generateTip} disabled={isLoading}>
               <Sparkles className="h-4 w-4 mr-2" />
               Generate Your First Tip
             </Button>

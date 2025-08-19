@@ -38,12 +38,12 @@ export function ProgressChart({ data }: ProgressChartProps) {
               color: "hsl(var(--chart-1))",
             },
           }}
-          className="h-[300px]"
+          className="W-[100%] sm:w-auto sm:h-[300px]"
         >
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={chartData}>
-              <XAxis dataKey="dateFormatted" />
-              <YAxis domain={[0, 100]} />
+            <LineChart data={chartData} margin={{ top: 5, right: 5, left: 5, bottom: 5 }}>
+              <XAxis dataKey="dateFormatted" fontSize={12} tick={{ fontSize: 12 }} interval="preserveStartEnd" />
+              <YAxis domain={[0, 100]} fontSize={12} tick={{ fontSize: 12 }} width={30} />
               <ChartTooltip
                 content={
                   <ChartTooltipContent
@@ -56,7 +56,7 @@ export function ProgressChart({ data }: ProgressChartProps) {
                 dataKey="completionRate"
                 stroke="var(--color-completionRate)"
                 strokeWidth={2}
-                dot={{ fill: "var(--color-completionRate)" }}
+                dot={{ fill: "var(--color-completionRate)", r: 3 }}
               />
             </LineChart>
           </ResponsiveContainer>

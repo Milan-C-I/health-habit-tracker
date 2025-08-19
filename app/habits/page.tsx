@@ -13,6 +13,8 @@ import { Plus } from "lucide-react";
 import { HabitForm } from "@/components/habit-form";
 import { HabitCard } from "@/components/habit-card";
 import type { HabitWithLogs } from "@/lib/types";
+import { BackButton } from "@/components/back-button";
+import { RippleRingLoader } from "react-loaderkit";
 
 export default function HabitsPage() {
   const [habits, setHabits] = useState<HabitWithLogs[]>([]);
@@ -55,17 +57,25 @@ export default function HabitsPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background p-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center py-8">Loading habits...</div>
-        </div>
-      </div>
+              <div className="max-w-7xl h-[100vh] mx-auto flex flex-col items-center justify-around">
+                <div className="text-center flex flex-col items-center font-bold -mt-20 py-8">
+                  <RippleRingLoader
+                size={70} 
+                color="#8B5CF6"
+                speed={1} 
+              />
+              <h1 className="mt-12 text-2xl">LOADING HABITS...</h1>
+              </div>
+              </div>
+            </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-background p-4">
       <div className="max-w-4xl mx-auto space-y-6">
-        <div className="flex items-center justify-between">
+        <BackButton href="/dashboard" label="Dashboard" />
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold">My Habits</h1>
             <p className="text-muted-foreground">
@@ -77,13 +87,13 @@ export default function HabitsPage() {
             onOpenChange={setIsCreateDialogOpen}
           >
             <DialogTrigger asChild>
-              <Button>
+              <Button className="cursor-pointer">
                 <Plus className="h-4 w-4 mr-2" />
                 Add Habit
               </Button>
             </DialogTrigger>
             <DialogContent>
-              <DialogHeader>
+              <DialogHeader className="cursor-pointer">
                 <DialogTitle>Create New Habit</DialogTitle>
               </DialogHeader>
               <HabitForm
