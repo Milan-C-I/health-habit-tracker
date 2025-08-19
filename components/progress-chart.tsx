@@ -54,9 +54,9 @@ export function ProgressChart({ data }: ProgressChartProps) {
               <Line
                 type="monotone"
                 dataKey="completionRate"
-                stroke="var(--color-completionRate)"
+                stroke="var(--chart-4)"
                 strokeWidth={2}
-                dot={{ fill: "var(--color-completionRate)", r: 3 }}
+                dot={{ fill: "var(--chart-1)", r: 5 }}
               />
             </LineChart>
           </ResponsiveContainer>
