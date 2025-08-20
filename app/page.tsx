@@ -5,9 +5,9 @@ import { Activity, BarChart3, Brain, Target } from "lucide-react"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-tr from-blue-50 to-indigo-100 dark:from-black dark:via-black/10 dark:to-blue-950">
+      <div className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 py-16 sm:py-24">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
@@ -86,7 +86,7 @@ export default function HomePage() {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gray-50 dark:bg-gray-900 py-16">
+      <div className="bg-gradient-to-b pb-12 from-transparent via-purple-800/20 to-blue-600/40">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
             Ready to start your health journey?

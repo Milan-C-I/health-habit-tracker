@@ -50,7 +50,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+    <div className="min-h-screen flex items-center justify-center bg-transparent p-4">
       <div className="w-full max-w-md relative">
         <Card className="w-full">
           <Link className="absolute cursor-pointer top-4 text-white right-4" href="/">

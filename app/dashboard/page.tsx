@@ -60,7 +60,7 @@ export default function DashboardPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-background p-4">
+      <div className="min-h-screen bg-transparent p-4">
         <div className="max-w-7xl h-[100vh] mx-auto flex flex-col items-center justify-around">
           <div className="text-center flex flex-col items-center font-bold -mt-20 py-8">
             <RippleRingLoader
@@ -77,7 +77,7 @@ export default function DashboardPage() {
 
   if (!data) {
     return (
-      <div className="min-h-screen bg-background p-4">
+      <div className="min-h-screen bg-transparent p-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center py-8">Failed to load dashboard data</div>
         </div>
@@ -86,19 +86,19 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-4 overflow-x-hidden">
+    <div className="min-h-screen bg-transparent p-4 overflow-x-hidden">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
         <h1 className="text-3xl mb-2 font-bold">Dashboard</h1>
-        <Button className="bg-red-400 cursor-pointer hover:bg-red-200 hover:text-red-600" onClick={handleLogout}>
+        <Button className="bg-red-400 cursor-pointer hover:bg-black/60 hover:border border-gray-500 hover:text-white" onClick={handleLogout}>
           <LogOut className="h-4 w-4 mr-2" /> Log Out
         </Button>
         </div>
         <div className="flex items-center flex-wrap justify-between">
           <div>
-            <h1 className="text-xl">Welcome <span className="text-purple-400">{data.user.name}</span></h1>
-            <p className="text-muted-foreground mb-6">Track your health and habit progress</p>
+            <h1 className="text-xl">Welcome <span className="text-purple-400 font-semibold">{data.user.name}</span></h1>
+            <p className="text-gray-300 mb-6">Track your health and habit progress</p>
           </div>
           <div className="flex gap-2">
             <Button asChild variant="outline">

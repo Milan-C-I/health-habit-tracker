@@ -56,7 +56,7 @@ export default function HabitsPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-background p-4">
+      <div className="min-h-screen bg-transparent p-4">
               <div className="max-w-7xl h-[100vh] mx-auto flex flex-col items-center justify-around">
                 <div className="text-center flex flex-col items-center font-bold -mt-20 py-8">
                   <RippleRingLoader
@@ -72,15 +72,17 @@ export default function HabitsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-4">
-      <div className="max-w-4xl mx-auto space-y-6">
-        <BackButton href="/dashboard" label="Dashboard" />
+    <div className="min-h-screen bg-transparent p-4">
+      <div className="max-w-7xl mx-auto space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold">My Habits</h1>
             <p className="text-muted-foreground">
               Track and manage your daily habits
             </p>
+          </div>
+          <div className="block sm:hidden">
+            <BackButton href="/dashboard" label="Dashboard" />
           </div>
           <Dialog
             open={isCreateDialogOpen}
@@ -102,6 +104,9 @@ export default function HabitsPage() {
               />
             </DialogContent>
           </Dialog>
+        </div>
+        <div className="hidden sm:block">
+        <BackButton href="/dashboard" label="Dashboard" />
         </div>
 
         {habits.length === 0 ? (

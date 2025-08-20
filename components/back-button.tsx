@@ -21,7 +21,7 @@ export function BackButton({ href, label = "Back" }: BackButtonProps) {
   }
 
   return (
-    <Button variant="ghost" size="sm" onClick={handleBack} className="mb-12 cursor-pointer bg-white text-black">
+    <Button variant="ghost" size="sm" onClick={handleBack} className="cursor-pointer bg-white text-black">
       <ArrowLeft className="h-4 w-4 mr-2" />
       {label}
     </Button>

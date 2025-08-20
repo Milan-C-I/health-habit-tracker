@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
+import DarkVeil from "./dark-veil"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,8 +31,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark`}>
       <body className="font-sans antialiased">
-        <div style={{ width: '100%', height: '600px', position: 'fixed', zIndex: '-1' }}>
-      </div>
+        <div className="fixed -z-1 w-[250vw] h-[400px] md:w-[100vw] md:h-[600px]">
+          <DarkVeil />
+        </div>
         {children}
         </body>
     </html>
